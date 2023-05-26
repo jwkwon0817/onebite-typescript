@@ -5,7 +5,8 @@
 
 class Employee {
 	// Constructor
-	constructor(private name: string, protected age: number, public position: string) {}
+	constructor(private name: string, protected age: number, public position: string) {
+	}
 	
 	// Methods
 	work() {
