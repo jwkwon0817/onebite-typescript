@@ -2,7 +2,7 @@
  * First Example
  */
 
-function swap<T, K>(a: T, b: K) {
+function swap<T, U>(a: T, b: U) {
 	return [ b, a ];
 }
 
