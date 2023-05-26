@@ -46,15 +46,25 @@ function logIn(user: User) {
 
 // An object that handles the result of an asynchronous operation.
 
-type AsyncTask = {
-	state: 'LOADING' | 'FAILED' | 'SUCCESS';
-	error?: {
+type LoadingTask = {
+	state: 'LOADING';
+};
+
+type FailedTask = {
+	state: 'FAILED';
+	error: {
 		message: string;
-	};
-	response?: {
+	}
+};
+
+type SuccessTask = {
+	state: 'SUCCESS';
+	response: {
 		data: string;
 	}
 };
+
+type AsyncTask = LoadingTask | FailedTask | SuccessTask;
 
 // LOADING -> Log 'Loading...'
 // FAILED -> Log 'An error occurred.'
@@ -65,10 +75,10 @@ function processResult(task: AsyncTask) {
 			console.log('Loading...');
 			break;
 		case 'FAILED':
-			console.log(`An error occurred: ${ task.error?.message }`);
+			console.log(`An error occurred: ${ task.error.message }`);
 			break;
 		case 'SUCCESS':
-			console.log(`Success: ${ task.response?.data }`);
+			console.log(`Success: ${ task.response.data }`);
 			break;
 	}
 }
